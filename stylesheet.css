@@ -1,0 +1,18 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+
+}
+
+.zosia-header {
+	height: 100vh;
+	background-color: #6fb1bc;
+	display: flex;
+	justify-content: center;
+	padding: 10%;
+	text-align: center;
+}
+
+.intro {
+	font-size: 1.5em;
+	font-weight: 300;
+}
