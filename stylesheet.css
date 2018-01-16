@@ -10,12 +10,7 @@ body {
 	justify-content: center;
 	padding: 20%;
 	text-align: center;
-}
-
-.color-trans {
-	position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+	transition: 0.5s;
 }
 
 .intro {
