@@ -14,12 +14,18 @@ body {
 }
 
 .intro {
-	font-size: 2em;
+	font-size: 1.5em;
 	font-weight: 400;
+}
+@media screen and (min-width: 540px) {
+	.intro {
+		font-size: 2em;
+		font-weight: 400;
+	}
 }
 
 .scroll-logo {
-	margin-top: 42px;
+	margin-top: 142px;
 	cursor: pointer;
 }
 .scroll-logo:hover {
