@@ -1,7 +1,7 @@
-$(function() {
+$(() => {
     //store element
     const zosiaElement = $(".zosia-section");
-    $(window).scroll(function() {
+    $(window).scroll(() => {
         if ($(this).scrollTop() <= 400) {
             zosiaElement.css("background", "#6fb1bc");
         } else if ($(this).scrollTop() <= 1200) {
@@ -14,5 +14,13 @@ $(function() {
             zosiaElement.css("background", "#dd98f2");
         }
     });
-});
 
+    const elementHeight = $('#built').offset().top;
+    $('.scroll-logo').on('click', () => {
+        window.scroll({
+            top: elementHeight, 
+            left: 0, 
+            behavior: 'smooth' 
+        });
+    }); 
+});
