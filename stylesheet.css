@@ -8,7 +8,7 @@ a:hover {
 }
 
 .zosia-section {
-	height: 100vh;
+	min-height: 100vh;
 	background-color: #6fb1bc;
 	display: flex;
 	justify-content: center;
