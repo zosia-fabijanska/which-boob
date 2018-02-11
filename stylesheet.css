@@ -2,18 +2,32 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
+a {
+	color: #4a4a4a;
+}
+
 a:hover {
 	text-decoration: none;
+	
 }
 
 .zosia-section {
-	min-height: 100vh;
-	background-color: #6fb1bc;
+	padding: 48px 32px 48px 48px;
 	display: flex;
-	justify-content: center;
-	padding: 20%;
-	text-align: center;
 	transition: 0.5s;
+}
+
+.header-name {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 600;
+	font-size: 3.5em;
+	color: #5abc7b;
+}
+
+.header {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 600;
+	font-size: 2.5em;
 }
 
 .intro {
@@ -25,14 +39,4 @@ a:hover {
 		font-size: 2em;
 		font-weight: 400;
 	}
-}
-
-.scroll-logo {
-	margin-top: 142px;
-	cursor: pointer;
-}
-.scroll-logo:hover {
-	transform: scale(0.95);
-	transition: all 300ms;
-
 }
