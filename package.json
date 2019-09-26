@@ -2,11 +2,12 @@
   "name": "which-boob",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://zosia-fabijanska.github.io/which-boob",
+  "homepage": "http://zosia-fabijanska.github.io/which-boob",
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
