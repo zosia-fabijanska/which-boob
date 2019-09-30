@@ -1,27 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from './components/Header';
-import BoobIcon from './components/BoobIcon';
-import {peach} from './constants/colours';
+import BoobIconContainer from './components/BoobIconContainer';
+import NavBar from './components/NavBar';
+import { peach } from './constants/colours';
 
 
 const MainContainer = styled.div`
   background: ${peach}; 
   height: 100vh;
-`;
-
-const IconContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 function App() {
   return (
     <MainContainer>
-      <Header/>
-      <div>
-        <BoobIcon/>
-        <BoobIcon/>
-      </div>
+      <Header />
+      <BoobIconContainer />
+      <NavBar />
     </MainContainer>
   );
 }
