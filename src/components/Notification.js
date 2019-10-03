@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { white } from '../constants/colours';
 
 const NotificationContainer = styled.div`
-    border: 1px solid #ffffff;
+    border: 1px solid ${white};
     border-radius: 5px;
     padding: 6px;
     margin: 0 12px;
@@ -10,7 +11,7 @@ const NotificationContainer = styled.div`
 
 const NotificationText = styled.p`
     font-size: 16px;
-    color: #ffffff;
+    color: ${white};
     text-align: center;
 `;
 

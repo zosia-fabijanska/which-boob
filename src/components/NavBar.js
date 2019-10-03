@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import home from '../assets/home.svg';
 import activity from '../assets/development.svg';
+import { white } from '../constants/colours';
 
 const NavIconContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  border-top: solid 2px #ffffff;
+  border-top: solid 2px ${white};
   padding: 12px 0;
 `;
 
