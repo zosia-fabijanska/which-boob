@@ -8,13 +8,13 @@ const IconContainer = styled.div`
 `;
 
 const BoobIconLeft = styled.img`
-    max-width: 88px;
+    max-width: 120px;
     transform: scaleX(-1);
     margin: 0 16px;
 `;
 
 const BoobIconRight = styled.img`
-    max-width: 88px;
+    max-width: 120px;
     margin: 0 16px;
 `;
 
