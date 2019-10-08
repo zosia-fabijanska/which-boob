@@ -43,7 +43,6 @@ const useInterval = (callback, delay) => {
 const Timer = () => {
   const [startTime, setStartTime] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
-  const [buttonText, setButtonText] = useState('START');
 
   useInterval(() => {
     if (isClicked) {
@@ -52,7 +51,6 @@ const Timer = () => {
   }, 1000);
 
   const startTimer = () => {
-    setButtonText('PAUSE');
     setIsClicked(!isClicked);
   }
 
@@ -62,7 +60,7 @@ const Timer = () => {
       <StartButton
         onClick={startTimer}
       >
-        {buttonText}
+        {isClicked ? 'PAUSE' : 'START'}
       </StartButton>
     </ButtonContainer >
   )
