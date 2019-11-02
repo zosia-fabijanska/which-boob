@@ -1,6 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
 import styled from 'styled-components';
-import { white, peach } from '../constants/colours';
+import { white } from '../constants/colours';
+import { finishFeed } from '../actions/actions';
+import BoobIconContainer from './BoobIconContainer';
+
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -8,62 +16,72 @@ const ButtonContainer = styled.div`
   align-items: center;
 `;
 
-const StartButton = styled.button`
+const DoneButton = styled.button`
     border: 1px solid ${white};
     border-radius: 5px;
-    background: ${peach};
+    background-color: rgba( 256, 256, 256, 0.2 );
     color: ${white}
     font-size: 18px;
     padding: 12px 40px;
-    max-width: 50%;
+    width: 50%;
 `;
 
-// CUSTOM HOOK: https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 
-const useInterval = (callback, delay) => {
-  const savedCallback = useRef();
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-}
-
-const Timer = () => {
-  const [startTime, setStartTime] = useState(0);
+const Timer = ({ current, history, finishFeed }) => {
+  const [feedCounter, setFeedCounter] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
+  const [timeStarted, setTimeStarted] = useState('');
 
-  useInterval(() => {
-    if (isClicked) {
-      setStartTime(startTime + 1);
-    }
-  }, 1000);
+  console.log('TIME STARTED', timeStarted);
 
-  const startTimer = () => {
-    setIsClicked(!isClicked);
-  }
+  const handleFinishFeed = () => {
+    const date = timeStarted;
+    const leftTime = feedCounter;
+    const rightTime = 'blah';
+
+    finishFeed(date, leftTime, rightTime)
+  };
 
   return (
-    <ButtonContainer>
-      <p>{startTime} seconds</p>
-      <StartButton
-        onClick={startTimer}
-      >
-        {isClicked ? 'PAUSE' : 'START'}
-      </StartButton>
-    </ButtonContainer >
+    <div>
+      <IconContainer>
+        <BoobIconContainer
+          feedCounter={feedCounter}
+          setFeedCounter={setFeedCounter}
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
+          timeStarted={timeStarted}
+          setTimeStarted={setTimeStarted}
+          side='Left'
+        />
+        <BoobIconContainer
+          feedCounter={feedCounter}
+          setFeedCounter={setFeedCounter}
+          isClicked={isClicked}
+          setIsClicked={setIsClicked}
+          timeStarted={timeStarted}
+          setTimeStarted={setTimeStarted}
+          side='Right'
+        />
+      </IconContainer>
+      <ButtonContainer>
+        <p style={{ color: '#ffffff' }}>TOTAL TIME: </p>
+        <DoneButton onClick={handleFinishFeed}>DONE</DoneButton>
+      </ButtonContainer >
+    </div >
   )
 };
 
-export default Timer;
+const mapStateToProps = (state) => {
+  return {
+    current: state.current,
+    history: state.history,
+  }
+}
+
+const mapDispatchToProps = { finishFeed }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Timer)

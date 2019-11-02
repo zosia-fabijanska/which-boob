@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from './components/Header';
-import BoobIconContainer from './components/BoobIconContainer';
+// import BoobIconContainer from './components/BoobIconContainer';
 import Timer from './components/Timer';
 import Notification from './components/Notification';
 import NavBar from './components/NavBar';
@@ -20,7 +20,7 @@ function App() {
   return (
     <MainContainer>
       <Header />
-      <BoobIconContainer />
+      {/* <BoobIconContainer /> */}
       <Timer />
       <Notification />
       <NavBar />
