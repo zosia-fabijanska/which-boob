@@ -1,18 +1,17 @@
 {
   "files": {
-    "main.css": "/which-boob/static/css/main.34de6062.chunk.css",
-    "main.js": "/which-boob/static/js/main.08b08cc9.chunk.js",
-    "main.js.map": "/which-boob/static/js/main.08b08cc9.chunk.js.map",
-    "runtime-main.js": "/which-boob/static/js/runtime-main.4e78cb0e.js",
-    "runtime-main.js.map": "/which-boob/static/js/runtime-main.4e78cb0e.js.map",
-    "static/js/2.94d6e97c.chunk.js": "/which-boob/static/js/2.94d6e97c.chunk.js",
-    "static/js/2.94d6e97c.chunk.js.map": "/which-boob/static/js/2.94d6e97c.chunk.js.map",
-    "index.html": "/which-boob/index.html",
-    "precache-manifest.251b322767016d0a9caa1708d24db797.js": "/which-boob/precache-manifest.251b322767016d0a9caa1708d24db797.js",
-    "service-worker.js": "/which-boob/service-worker.js",
-    "static/css/main.34de6062.chunk.css.map": "/which-boob/static/css/main.34de6062.chunk.css.map",
-    "static/media/breastWhite.svg": "/which-boob/static/media/breastWhite.8ce30e07.svg",
-    "static/media/development.svg": "/which-boob/static/media/development.fa20f2a7.svg",
-    "static/media/home.svg": "/which-boob/static/media/home.83e24a55.svg"
+    "main.css": "/static/css/main.34de6062.chunk.css",
+    "main.js": "/static/js/main.f740b693.chunk.js",
+    "main.js.map": "/static/js/main.f740b693.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d236f4f1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d236f4f1.js.map",
+    "static/js/2.ead331de.chunk.js": "/static/js/2.ead331de.chunk.js",
+    "static/js/2.ead331de.chunk.js.map": "/static/js/2.ead331de.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.1b0ea8d39986e7b48f0e524ef008c082.js": "/precache-manifest.1b0ea8d39986e7b48f0e524ef008c082.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/static/css/main.34de6062.chunk.css.map",
+    "static/media/development.svg": "/static/media/development.fa20f2a7.svg",
+    "static/media/home.svg": "/static/media/home.83e24a55.svg"
   }
 }
