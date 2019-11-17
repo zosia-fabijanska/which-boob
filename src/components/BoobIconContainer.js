@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
-// import breastIcon from '../assets/breastWhite.svg';
+import { peach, white } from '../constants/colours';
 import { finishFeed } from '../actions/actions';
 
 const IconContainer = styled.div`
@@ -9,10 +9,11 @@ const IconContainer = styled.div`
   justify-content: center;
 `;
 
-const BoobIcon = styled.div`
+const BoobIcon = styled.button`
+  background-color: ${peach};
     width: 120px;
     height: 120px;
-    border: 3px solid #ffffff;
+    border: 3px solid ${white};
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -21,14 +22,14 @@ const BoobIcon = styled.div`
 `;
 
 const ButtonText = styled.p`
-  color: #ffffff;
+  color: ${({ selected }) => selected ? white : 'lightgrey'};
   font-weight: 700;
   font-size: 1.1rem;
 `;
 
 const PauseStartButton = styled.div`
   background-color: rgba( 256, 256, 256, 0.2 );
-  color: #ffffff;
+  color: ${white};
   padding: 8px;
   border-radius: 10px;
   font-weight: 600;
@@ -67,29 +68,54 @@ const BoobIconContainer = ({
   finishFeed,
   feedCounter,
   setFeedCounter,
-  isClicked,
-  setIsClicked,
+  isActive,
+  setIsActive,
   timeStarted,
-  setTimeStarted
+  setTimeStarted,
+  isPaused,
+  setIsPaused
 }) => {
 
+  console.log(isPaused);
+
   useInterval(() => {
-    if (isClicked) {
+    if (isActive) {
       setFeedCounter(feedCounter + 1);
     }
-  }, 1000);
+  }, !isPaused ? 1000 : null);
 
 
-  const startCounter = () => {
-    setTimeStarted(Date.now());
-    setIsClicked(!isClicked);
+  let buttonText;
+
+  if (!timeStarted) {
+    buttonText = 'START';
+  } else if (isActive && timeStarted && !isPaused) {
+    buttonText = 'PAUSE';
+  } else {
+    buttonText = 'RESUME'
+  }
+
+
+  const handleClick = () => {
+    if (!timeStarted) { // if it is the very first click
+      setTimeStarted(Date.now());
+      setIsPaused(false);
+      setIsActive(true);
+    } else if (isActive) { // if I'm the active container and I've been clicked
+      setIsPaused(!isPaused);
+    } else { // if I'm the inactive container and I've been clicked
+      setIsActive(true);
+      setIsPaused(false);
+    }
   }
 
   return (
     <IconContainer>
-      <BoobIcon onClick={startCounter} >
-        <ButtonText>{side}: {feedCounter} s</ButtonText>
-        <PauseStartButton>{isClicked ? 'PAUSE' : 'START'}</PauseStartButton>
+      <BoobIcon
+        onClick={handleClick}
+      >
+        <ButtonText selected={isActive}>{side}: {feedCounter} s</ButtonText>
+        <PauseStartButton>{buttonText}</PauseStartButton>
       </BoobIcon>
     </IconContainer >
   )

@@ -13,7 +13,7 @@ const Title = styled.p`
 class Header extends React.Component {
     render() {
         return (
-            <Title>Which Buub?</Title>
+            <Title>which buub?</Title>
         )
     }
 };

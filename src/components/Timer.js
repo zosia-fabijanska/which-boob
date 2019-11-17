@@ -28,39 +28,49 @@ const DoneButton = styled.button`
 
 
 const Timer = ({ current, history, finishFeed }) => {
-  const [feedCounter, setFeedCounter] = useState(0);
-  const [isClicked, setIsClicked] = useState(false);
+  const [leftFeedCounter, setLeftFeedCounter] = useState(0);
+  const [rightFeedCounter, setRightFeedCounter] = useState(0);
   const [timeStarted, setTimeStarted] = useState('');
-
-  console.log('TIME STARTED', timeStarted);
+  const [leftSideActive, setLeftSideActive] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
 
   const handleFinishFeed = () => {
     const date = timeStarted;
-    const leftTime = feedCounter;
-    const rightTime = 'blah';
+    const leftTime = leftFeedCounter;
+    const rightTime = rightFeedCounter;
 
-    finishFeed(date, leftTime, rightTime)
+    finishFeed(date, leftTime, rightTime);
+    setLeftFeedCounter(0);
+    setRightFeedCounter(0);
+    setLeftSideActive(false);
+    setTimeStarted('');
   };
+
+  console.log('HISTORY', history);
 
   return (
     <div>
       <IconContainer>
         <BoobIconContainer
-          feedCounter={feedCounter}
-          setFeedCounter={setFeedCounter}
-          isClicked={isClicked}
-          setIsClicked={setIsClicked}
+          feedCounter={leftFeedCounter}
+          setFeedCounter={setLeftFeedCounter}
+          isActive={leftSideActive === true}
+          setIsActive={() => setLeftSideActive(true)}
           timeStarted={timeStarted}
           setTimeStarted={setTimeStarted}
+          isPaused={isPaused}
+          setIsPaused={setIsPaused}
           side='Left'
         />
         <BoobIconContainer
-          feedCounter={feedCounter}
-          setFeedCounter={setFeedCounter}
-          isClicked={isClicked}
-          setIsClicked={setIsClicked}
+          feedCounter={rightFeedCounter}
+          setFeedCounter={setRightFeedCounter}
+          isActive={leftSideActive === false}
+          setIsActive={() => setLeftSideActive(false)}
           timeStarted={timeStarted}
           setTimeStarted={setTimeStarted}
+          isPaused={isPaused}
+          setIsPaused={setIsPaused}
           side='Right'
         />
       </IconContainer>
