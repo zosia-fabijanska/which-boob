@@ -44,6 +44,7 @@ const Timer = ({ current, history, finishFeed }) => {
     setRightFeedCounter(0);
     setLeftSideActive(false);
     setTimeStarted('');
+    setIsPaused(true);
   };
 
   console.log('HISTORY', history);
