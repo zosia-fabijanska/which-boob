@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
-import { peach, white } from '../constants/colours';
+import { darkPeach, white } from '../constants/colours';
 import { finishFeed } from '../actions/actions';
 
 const IconContainer = styled.div`
@@ -10,26 +10,26 @@ const IconContainer = styled.div`
 `;
 
 const BoobIcon = styled.button`
-  background-color: ${peach};
+    background-color: ${white};
     width: 120px;
     height: 120px;
-    border: 3px solid ${white};
+    border: 3px solid ${({ selected }) => selected ? darkPeach : white};
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    outline: none;
 `;
 
 const ButtonText = styled.p`
-  color: ${({ selected }) => selected ? white : 'lightgrey'};
+  color: ${darkPeach};
   font-weight: 700;
   font-size: 1.1rem;
 `;
 
 const PauseStartButton = styled.div`
-  background-color: rgba( 256, 256, 256, 0.2 );
-  color: ${white};
+  color: ${darkPeach};
   padding: 8px;
   border-radius: 10px;
   font-weight: 600;
@@ -113,8 +113,9 @@ const BoobIconContainer = ({
     <IconContainer>
       <BoobIcon
         onClick={handleClick}
+        selected={isActive}
       >
-        <ButtonText selected={isActive}>{side}: {feedCounter} s</ButtonText>
+        <ButtonText>{side}: {feedCounter} s</ButtonText>
         <PauseStartButton>{buttonText}</PauseStartButton>
       </BoobIcon>
     </IconContainer >

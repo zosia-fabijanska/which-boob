@@ -8,7 +8,8 @@ const initialState = {
     },
     rightBoob: {
       time: 0
-    }
+    },
+    lastFedOnLeftSide: ''
   },
   history: []
 };
@@ -36,7 +37,8 @@ function rootReducer(state = initialState, action) {
             },
             rightBoob: {
               time: action.rightTime
-            }
+            },
+            lastFedOnLeftSide: action.side
           },
           history: [
             ...state.history,

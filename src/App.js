@@ -4,11 +4,11 @@ import Header from './components/Header';
 import Timer from './components/Timer';
 import Notification from './components/Notification';
 import NavBar from './components/NavBar';
-import { peach } from './constants/colours';
+import { peach, orange } from './constants/colours';
 
 
 const MainContainer = styled.div`
-  background: ${peach}; 
+  background-image: linear-gradient(to bottom right, ${peach}, ${orange}); 
   height: 100vh;
   display: flex;
   flex-direction: column;

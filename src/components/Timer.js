@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
-import { white } from '../constants/colours';
+import { white, darkPeach } from '../constants/colours';
 import { finishFeed } from '../actions/actions';
 import BoobIconContainer from './BoobIconContainer';
 
@@ -17,37 +17,50 @@ const ButtonContainer = styled.div`
 `;
 
 const DoneButton = styled.button`
-    border: 1px solid ${white};
+    border: 2px solid ${darkPeach};
     border-radius: 5px;
-    background-color: rgba( 256, 256, 256, 0.2 );
-    color: ${white}
-    font-size: 18px;
+    background-color: ${white};
+    color: ${darkPeach}
+    font-size: 1.1rem;
+    font-weight: 700;
     padding: 12px 40px;
     width: 50%;
 `;
 
+const TotalTimeText = styled.p`
+  color: ${white};
+  font-size: 1.1rem;
+  font-weight: 700;
+`;
 
-const Timer = ({ current, history, finishFeed }) => {
+
+const Timer = ({ finishFeed }) => {
   const [leftFeedCounter, setLeftFeedCounter] = useState(0);
   const [rightFeedCounter, setRightFeedCounter] = useState(0);
   const [timeStarted, setTimeStarted] = useState('');
-  const [leftSideActive, setLeftSideActive] = useState(false);
+  const [leftSideActive, setLeftSideActive] = useState(undefined);
   const [isPaused, setIsPaused] = useState(true);
 
   const handleFinishFeed = () => {
     const date = timeStarted;
     const leftTime = leftFeedCounter;
     const rightTime = rightFeedCounter;
+    const lastFedOnLeftSide = leftSideActive;
 
-    finishFeed(date, leftTime, rightTime);
+    finishFeed(date, leftTime, rightTime, lastFedOnLeftSide);
     setLeftFeedCounter(0);
     setRightFeedCounter(0);
-    setLeftSideActive(false);
+    setLeftSideActive(undefined);
     setTimeStarted('');
     setIsPaused(true);
   };
 
-  console.log('HISTORY', history);
+
+  const totalTime = leftFeedCounter + rightFeedCounter;
+
+  const secondsToTime = (time) => {
+    return (time - (time %= 60)) / 60 + (9 < time ? ':' : ':0') + time
+  }
 
   return (
     <div>
@@ -76,7 +89,7 @@ const Timer = ({ current, history, finishFeed }) => {
         />
       </IconContainer>
       <ButtonContainer>
-        <p style={{ color: '#ffffff' }}>TOTAL TIME: </p>
+        <TotalTimeText>TOTAL TIME: {secondsToTime(totalTime)} seconds </TotalTimeText>
         <DoneButton onClick={handleFinishFeed}>DONE</DoneButton>
       </ButtonContainer >
     </div >
