@@ -21,7 +21,6 @@ const NotificationText = styled.p`
 
 const StrongSpan = styled.span`
   font-weight: 700;
-  color: ${darkPeach};
 `;
 
 class Notification extends React.Component {
@@ -36,16 +35,13 @@ class Notification extends React.Component {
 
     const { lastFedOnLeftSide, date } = _.last(this.props.history);
 
-    const timeLastFed = moment(date).startOf('minute').fromNow();
+    const timeLastFed = moment(date).format('LT');;
 
     if (this.props.history !== prevProps.history) {
       this.setState({
         notification:
-          <NotificationText>You last fed on the{' '}
-            <StrongSpan>
-              {lastFedOnLeftSide ? 'LEFT' : 'RIGHT'}{' '}
-            </StrongSpan>
-            side, {timeLastFed}.
+          <NotificationText>You last fed on the
+            <StrongSpan>{lastFedOnLeftSide ? ' LEFT ' : ' RIGHT '}</StrongSpan>side, starting at <StrongSpan>{timeLastFed}.</StrongSpan>
           </NotificationText>
       });
     }
