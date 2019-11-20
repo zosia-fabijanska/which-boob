@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
 import _ from 'lodash';
+import moment from 'moment';
 import { white, darkPeach } from '../constants/colours';
 
 const NotificationContainer = styled.div`
@@ -33,9 +34,20 @@ class Notification extends React.Component {
 
   componentDidUpdate(prevProps) {
 
-    const { lastFedOnLeftSide } = _.last(this.props.history);
+    const { lastFedOnLeftSide, date } = _.last(this.props.history);
+
+    const timeLastFed = moment(date).startOf('minute').fromNow();
+
     if (this.props.history !== prevProps.history) {
-      this.setState({ notification: <NotificationText>You last fed on the <StrongSpan>{lastFedOnLeftSide ? 'LEFT' : 'RIGHT'}</StrongSpan> side, [time] ago</NotificationText> });
+      this.setState({
+        notification:
+          <NotificationText>You last fed on the{' '}
+            <StrongSpan>
+              {lastFedOnLeftSide ? 'LEFT' : 'RIGHT'}{' '}
+            </StrongSpan>
+            side, {timeLastFed}.
+          </NotificationText>
+      });
     }
   };
 
