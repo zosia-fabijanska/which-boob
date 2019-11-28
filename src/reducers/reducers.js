@@ -18,15 +18,7 @@ function rootReducer(state = initialState, action) {
   console.log("every action", action)
 
   switch (action.type) {
-    // case 'finish': {
-    //   return {
-    //     ...state,
-    //     history: [
-    //       ...state.history,
-    //       action.payload
-    //     ]
-    //   }
-    // }
+
     case FINISH_FEED:
       return (
         {

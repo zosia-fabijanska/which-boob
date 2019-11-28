@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import styled from 'styled-components';
 import _ from 'lodash';
 import moment from 'moment';
@@ -24,48 +23,30 @@ const StrongSpan = styled.span`
   color: ${darkPeach};
 `;
 
-class Notification extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      notification: <NotificationText>Welcome! Start recording your first feed!</NotificationText>
-    }
-  }
+const Notification = ({ history }) => {
 
-  componentDidUpdate(prevProps) {
 
-    const { lastFedOnLeftSide, date } = _.last(this.props.history);
+  if (history.length) {
+    const { lastFedOnLeftSide, date } = _.last(history);
 
     const timeLastFed = moment(date).format('LT');;
 
-    if (this.props.history !== prevProps.history) {
-      this.setState({
-        notification:
-          <NotificationText>You last fed on the
-            <StrongSpan>{lastFedOnLeftSide ? ' LEFT ' : ' RIGHT '}</StrongSpan>side, starting at <StrongSpan>{timeLastFed}.</StrongSpan>
-          </NotificationText>
-      });
-    }
-  };
 
-  render() {
-    console.log('HOME HISTORY', this.props.history);
     return (
       <NotificationContainer>
-        {this.state.notification}
+        <NotificationText>You last fed on the
+        <StrongSpan>{lastFedOnLeftSide ? ' LEFT ' : ' RIGHT '}</StrongSpan>side, starting at <StrongSpan>{timeLastFed}.</StrongSpan>
+        </NotificationText>
       </NotificationContainer>
     )
   }
-
+  console.log('HOME HISTORY', history);
+  return (
+    <NotificationContainer>
+      <NotificationText>Welcome! Start recording your first feed!</NotificationText>
+    </NotificationContainer>
+  )
 };
 
-const mapStateToProps = (state) => {
-  return {
-    history: state.history,
-  }
-}
 
-
-export default connect(
-  mapStateToProps,
-)(Notification);
+export default Notification;

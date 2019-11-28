@@ -14,13 +14,13 @@ const MainContainer = styled.div`
   justify-content: space-around;
 `;
 
-const Home = () => {
+const Home = ({ history }) => {
 
     return (
         <MainContainer>
             <Header />
             <Timer />
-            <Notification />
+            <Notification history={history} />
         </MainContainer>
     );
 
