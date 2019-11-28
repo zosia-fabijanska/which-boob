@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { darkPeach, white } from '../constants/colours';
 import { finishFeed } from '../actions/actions';
@@ -135,4 +135,4 @@ const mapDispatchToProps = { finishFeed }
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BoobIconContainer)
+)(BoobIconContainer);

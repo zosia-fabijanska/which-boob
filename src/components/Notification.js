@@ -21,6 +21,7 @@ const NotificationText = styled.p`
 
 const StrongSpan = styled.span`
   font-weight: 700;
+  color: ${darkPeach};
 `;
 
 class Notification extends React.Component {
@@ -48,6 +49,7 @@ class Notification extends React.Component {
   };
 
   render() {
+    console.log('HOME HISTORY', this.props.history);
     return (
       <NotificationContainer>
         {this.state.notification}
