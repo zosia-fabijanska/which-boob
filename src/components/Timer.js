@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
-import { white, darkPeach } from '../constants/colours';
+import { white, darkPeach, lightPeach } from '../constants/colours';
 import { finishFeed } from '../actions/actions';
 import BoobIconContainer from './BoobIconContainer';
 
@@ -17,10 +17,10 @@ const ButtonContainer = styled.div`
 `;
 
 const DoneButton = styled.button`
-    border: 2px solid ${darkPeach};
+    border: 2px solid ${({ disabled }) => disabled ? lightPeach : darkPeach};
     border-radius: 5px;
     background-color: ${white};
-    color: ${darkPeach}
+    color: ${({ disabled }) => disabled ? lightPeach : darkPeach};
     font-size: 1.1rem;
     font-weight: 700;
     padding: 12px 40px;
@@ -90,7 +90,7 @@ const Timer = ({ finishFeed }) => {
       </IconContainer>
       <ButtonContainer>
         <TotalTimeText>TOTAL TIME: {secondsToTime(totalTime)} seconds </TotalTimeText>
-        <DoneButton onClick={handleFinishFeed}>DONE</DoneButton>
+        <DoneButton disabled={!timeStarted} onClick={handleFinishFeed}>DONE</DoneButton>
       </ButtonContainer >
     </div >
   )

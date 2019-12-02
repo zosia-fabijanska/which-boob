@@ -10,26 +10,26 @@ const IconContainer = styled.div`
 `;
 
 const BoobIcon = styled.button`
-    background-color: ${white};
+    background-color:  ${({ selected }) => selected ? darkPeach : white};
     width: 120px;
     height: 120px;
-    border: 3px solid ${({ selected }) => selected ? darkPeach : white};
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     outline: none;
+    border: none;
 `;
 
 const ButtonText = styled.p`
-  color: ${darkPeach};
+  color:  ${({ selected }) => selected ? white : darkPeach};
   font-weight: 700;
   font-size: 1.1rem;
 `;
 
 const PauseStartButton = styled.div`
-  color: ${darkPeach};
+  color:  ${({ selected }) => selected ? white : darkPeach};
   padding: 8px;
   border-radius: 10px;
   font-weight: 600;
@@ -115,8 +115,8 @@ const BoobIconContainer = ({
         onClick={handleClick}
         selected={isActive}
       >
-        <ButtonText>{side}: {feedCounter} s</ButtonText>
-        <PauseStartButton>{buttonText}</PauseStartButton>
+        <ButtonText selected={isActive}>{side}: {feedCounter} s</ButtonText>
+        <PauseStartButton selected={isActive}>{buttonText}</PauseStartButton>
       </BoobIcon>
     </IconContainer >
   )
