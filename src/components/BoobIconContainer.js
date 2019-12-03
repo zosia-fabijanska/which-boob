@@ -76,7 +76,6 @@ const BoobIconContainer = ({
   setIsPaused
 }) => {
 
-  console.log(isPaused);
 
   useInterval(() => {
     if (isActive) {
@@ -94,6 +93,14 @@ const BoobIconContainer = ({
   } else {
     buttonText = 'RESUME'
   }
+
+  const secondsToMinutes = (time) => {
+    if (time < 60) {
+      return `${time} s`
+    } else {
+      return `${Math.floor(time / 60)}  m`;
+    }
+  };
 
 
   const handleClick = () => {
@@ -115,7 +122,7 @@ const BoobIconContainer = ({
         onClick={handleClick}
         selected={isActive}
       >
-        <ButtonText selected={isActive}>{side}: {feedCounter} s</ButtonText>
+        <ButtonText selected={isActive}>{side}: {secondsToMinutes(feedCounter)}</ButtonText>
         <PauseStartButton selected={isActive}>{buttonText}</PauseStartButton>
       </BoobIcon>
     </IconContainer >

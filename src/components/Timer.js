@@ -62,6 +62,7 @@ const Timer = ({ finishFeed }) => {
     return (time - (time %= 60)) / 60 + (9 < time ? ':' : ':0') + time
   }
 
+
   return (
     <div>
       <IconContainer>

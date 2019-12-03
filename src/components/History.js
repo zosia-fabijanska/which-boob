@@ -38,7 +38,9 @@ const StrongSpan = styled.span`
 
 const History = ({ history }) => {
 
-  console.log('HISTORY HISTORY', history.length);
+  const secondsToTime = (time) => {
+    return (time - (time %= 60)) / 60 + (9 < time ? ':' : ':0') + time
+  }
 
 
   const historyItems = history.map((i) => {
@@ -49,7 +51,7 @@ const History = ({ history }) => {
     return (
       <FeedItemContainer key={i.date}>
         <FeedItemText><StrongSpan>{dateTime}</StrongSpan></FeedItemText>
-        <FeedItemText><StrongSpan>Total time: </StrongSpan>{totalTime} seconds</FeedItemText>
+        <FeedItemText><StrongSpan>Total time: </StrongSpan>{secondsToTime(totalTime)}</FeedItemText>
         <FeedItemText><StrongSpan>Last side: </StrongSpan>{side}</FeedItemText>
       </FeedItemContainer>
 
@@ -58,9 +60,6 @@ const History = ({ history }) => {
   })
 
   const noHistory = <FeedItemContainer><FeedItemText>Welcome, record your first feed to see your history!</FeedItemText></FeedItemContainer>
-
-  console.log('HISTORY ITEMS', historyItems);
-
 
   return (
     <MainContainer>
